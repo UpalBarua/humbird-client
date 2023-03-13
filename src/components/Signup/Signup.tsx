@@ -32,7 +32,7 @@ export const Signup = () => {
       const res = await createUser(email, password);
 
       if (res?.user?.uid) {
-        await axios.post('http://localhost:3000/users', {
+        await axios.post('https://humbird-server.vercel.app/users', {
           email,
         });
 
@@ -54,7 +54,7 @@ export const Signup = () => {
       const res = await googleSignUp();
 
       if (res?.user?.uid) {
-        await axios.post('http://localhost:3000/users', {
+        await axios.post('https://humbird-server.vercel.app/users', {
           email: res?.user?.email,
         });
 

@@ -30,7 +30,9 @@ export const PostDetails = () => {
   } = useQuery({
     queryKey: ['postData'],
     queryFn: async () => {
-      const res = await axios.get(`http://localhost:3000/posts/${id}`);
+      const res = await axios.get(
+        `https://humbird-server.vercel.app/posts/${id}`
+      );
       return res.data;
     },
   });
@@ -41,7 +43,7 @@ export const PostDetails = () => {
       if (!currentUser?.email) return;
 
       const res = await axios.get(
-        `http://localhost:3000/users/${currentUser?.email}`
+        `https://humbird-server.vercel.app/users/${currentUser?.email}`
       );
       return res.data;
     },
@@ -72,7 +74,7 @@ export const PostDetails = () => {
 
     try {
       const res = await axios.patch(
-        `http://localhost:3000/posts?id=${id}&email=${currentUser?.email}`
+        `https://humbird-server.vercel.app/posts?id=${id}&email=${currentUser?.email}`
       );
 
       if (res?.data?.modifiedCount > 0) {
@@ -91,9 +93,12 @@ export const PostDetails = () => {
     }
 
     try {
-      const res = await axios.put(`http://localhost:3000/posts/${id}`, {
-        updatedPost,
-      });
+      const res = await axios.put(
+        `https://humbird-server.vercel.app/posts/${id}`,
+        {
+          updatedPost,
+        }
+      );
 
       if (res?.data?.modifiedCount > 0) {
         toast.success('Post updated successfully');
@@ -109,7 +114,9 @@ export const PostDetails = () => {
 
   const handleDelete = async () => {
     try {
-      const res = await axios.delete(`http://localhost:3000/posts?id=${id}`);
+      const res = await axios.delete(
+        `https://humbird-server.vercel.app/posts?id=${id}`
+      );
 
       if (res?.data?.deletedCount > 0) {
         toast.success('Post deleted successfully');

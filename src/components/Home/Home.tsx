@@ -19,7 +19,7 @@ export const Home = () => {
   } = useQuery({
     queryKey: ['posts'],
     queryFn: async () => {
-      const res = await axios('http://localhost:3000/posts');
+      const res = await axios('https://humbird-server.vercel.app/posts');
       return res.data;
     },
   });

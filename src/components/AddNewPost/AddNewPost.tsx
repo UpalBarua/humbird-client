@@ -18,7 +18,10 @@ export const AddNewPost = ({ refetch }: { refetch: () => void }) => {
     };
 
     try {
-      const res = await axios.post('http://localhost:3000/posts', newPost);
+      const res = await axios.post(
+        'https://humbird-server.vercel.app/posts',
+        newPost
+      );
 
       if (res?.data?.acknowledged) {
         toast.success('Posted successfully!');

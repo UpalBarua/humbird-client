@@ -26,7 +26,7 @@ export const PostCard = ({
       if (!currentUser?.email) return;
 
       const res = await axios.get(
-        `http://localhost:3000/users/${currentUser?.email}`
+        `https://humbird-server.vercel.app/users/${currentUser?.email}`
       );
       return res.data;
     },
@@ -34,7 +34,9 @@ export const PostCard = ({
 
   const handleDelete = async () => {
     try {
-      const res = await axios.delete(`http://localhost:3000/posts?id=${_id}`);
+      const res = await axios.delete(
+        `https://humbird-server.vercel.app/posts?id=${_id}`
+      );
 
       if (res?.data?.deletedCount > 0) {
         toast.success('Post deleted successfully');
@@ -53,7 +55,7 @@ export const PostCard = ({
 
     try {
       const res = await axios.patch(
-        `http://localhost:3000/posts?id=${_id}&email=${currentUser?.email}`
+        `https://humbird-server.vercel.app/posts?id=${_id}&email=${currentUser?.email}`
       );
 
       if (res?.data?.modifiedCount > 0) {
